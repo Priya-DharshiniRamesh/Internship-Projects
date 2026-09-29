@@ -1,0 +1,515 @@
+
+
+/* ---------- 1. DESIGN TOKENS (colours, spacing, fonts) ---------- */
+:root {
+  --ocean: #0b3c5d;   /* main brand colour, headings, hero */
+  --aqua:  #1d9bb5;   /* decorative accents and borders only */
+  --mist:  #eef5f8;   /* page background */
+  --sun:   #f2b705;   /* primary button */
+  --ink:   #12232e;   /* body text */
+  --white: #ffffff;
+
+  --font-head: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Fluid spacing: grows with the screen but never below/above the limits */
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --section-space: clamp(2.5rem, 7vw, 5rem);
+  --radius: 0.75rem;
+  --max-width: 72rem;
+}
+
+
+/* ---------- 2. RESET / BASE ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;         /* keeps anchor targets clear of the sticky header */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;                   /* rem, not px, so user font settings are respected */
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--mist);
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-head);
+  line-height: 1.15;
+  margin: 0 0 0.75rem;
+  color: var(--ocean);
+}
+
+/* Fluid typography with clamp(min, ideal, max) */
+h1 { font-size: clamp(2rem, 6vw + 0.5rem, 3.75rem); }
+h2 { font-size: clamp(1.5rem, 3vw + 0.5rem, 2.25rem); }
+h3 { font-size: clamp(1.15rem, 1.5vw + 0.75rem, 1.4rem); }
+
+p { margin: 0 0 1rem; }
+
+a { color: var(--ocean); }
+
+/* Visible keyboard focus for everyone who doesn't use a mouse */
+:focus-visible {
+  outline: 3px solid var(--aqua);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  padding: 0.75rem 1rem;
+  background: var(--sun);
+  color: var(--ink);
+  z-index: 100;
+}
+.skip-link:focus { top: 1rem; }
+
+
+/* ---------- 3. BUTTONS (min 44 x 44px touch targets) ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;               /* 44px */
+  min-width: 2.75rem;
+  padding: 0.65rem 1.25rem;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-primary { background: var(--sun); color: var(--ink); }
+.btn-primary:hover { background: #ffc928; }
+
+.btn-ghost { border-color: var(--white); color: var(--white); }
+.btn-ghost:hover { background: rgba(255, 255, 255, 0.15); }
+
+.btn-outline { border-color: var(--ocean); color: var(--ocean); }
+.btn-outline:hover { background: var(--ocean); color: var(--white); }
+
+
+/* ---------- 4. HEADER + NAVIGATION (mobile base) ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--white);
+  border-bottom: 1px solid #d5e3ea;
+}
+
+.header-inner {
+  display: flex;                     /* Flexbox = one-dimensional row */
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: 0.5rem var(--gutter);
+}
+
+.brand {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-decoration: none;
+  color: var(--ocean);
+}
+
+/* Hamburger button */
+.menu-btn {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  background: transparent;
+  border: 2px solid var(--ocean);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+/* The three bars are drawn with one span + two shadows */
+.menu-btn__bars,
+.menu-btn__bars::before,
+.menu-btn__bars::after {
+  display: block;
+  width: 1.25rem;
+  height: 2px;
+  background: var(--ocean);
+}
+.menu-btn__bars { position: relative; }
+.menu-btn__bars::before,
+.menu-btn__bars::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+.menu-btn__bars::before { top: -6px; }
+.menu-btn__bars::after  { top: 6px; }
+
+/* The popover: a slide-in side panel on phones.
+   Popover API = the browser handles open, close, Esc key and click outside. */
+.site-nav {
+  inset: 0 0 0 auto;                 /* stick to the right edge */
+  width: min(80vw, 20rem);
+  height: 100dvh;
+  margin: 0;
+  padding: 1rem 1.5rem 2rem;
+  border: 0;
+  background: var(--ocean);
+  color: var(--white);
+}
+
+.site-nav::backdrop {
+  background: rgba(11, 60, 93, 0.55);
+}
+
+.close-btn {
+  display: block;
+  min-height: 2.75rem;
+  margin-left: auto;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 2px solid var(--white);
+  border-radius: 0.5rem;
+  color: var(--white);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.nav-list a {
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  color: var(--white);
+  font-size: 1.125rem;
+  text-decoration: none;
+}
+.nav-list a:hover { background: rgba(255, 255, 255, 0.12); }
+
+.site-nav :focus-visible { outline-color: var(--sun); }
+
+.nav-list .nav-cta {
+  margin-top: 0.75rem;
+  justify-content: center;
+  background: var(--sun);
+  color: var(--ink);
+  font-weight: 700;
+}
+.nav-list .nav-cta:hover { background: #ffc928; }
+
+
+/* ---------- 5. HERO ---------- */
+.hero {
+  position: relative;
+  background: var(--ocean);
+  color: var(--white);
+}
+
+.hero-inner {
+  display: grid;                     /* Grid = layout in two dimensions */
+  gap: 2rem;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: var(--section-space) var(--gutter) calc(var(--section-space) + 3rem);
+}
+
+.hero h1 { color: var(--white); }
+
+.lead {
+  font-size: clamp(1.05rem, 1vw + 0.85rem, 1.3rem);
+  max-width: 34rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;                   /* buttons wrap onto a new line if needed */
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.hero-panel {
+  align-self: start;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius);
+}
+.hero-panel h2 { color: var(--white); font-size: 1.25rem; }
+.hero-panel ul { margin: 0; padding-left: 1.1rem; }
+.hero-panel li + li { margin-top: 0.5rem; }
+
+.wave {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: clamp(2rem, 6vw, 5rem);
+  fill: var(--mist);
+  display: block;
+}
+
+
+/* ---------- 6. MAIN CONTENT LAYOUT (mobile: one column) ---------- */
+.content {
+  display: grid;
+  gap: var(--section-space);
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: var(--section-space) var(--gutter);
+}
+
+.section-intro { max-width: 40rem; }
+
+/* Cards: auto-fit means "fit as many 16rem columns as the space allows".
+   min(100%, 16rem) stops a card overflowing on very narrow phones. */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+/* Inside each card we switch to Flexbox to stack the content */
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background: var(--white);
+  border: 1px solid #d5e3ea;
+  border-top: 5px solid var(--aqua);
+  border-radius: var(--radius);
+}
+.card .btn { margin-top: auto; }     /* pushes every button to the same baseline */
+.card-meta {
+  font-weight: 700;
+  color: var(--ocean);
+}
+
+/* Featured block: it is a CONTAINER, so it responds to its own width */
+.feature-wrap {
+  container-type: inline-size;
+  margin-top: 1.25rem;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid #d5e3ea;
+}
+
+.feature-art {
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: var(--mist);
+  border-radius: var(--radius);
+}
+.feature-art svg {
+  width: min(100%, 14rem);
+  fill: none;
+  stroke: var(--ocean);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Container query: side by side once the block itself is 36rem wide */
+@container (min-width: 36rem) {
+  .feature {
+    flex-direction: row;
+    align-items: center;
+  }
+  .feature-art { flex: 0 0 40%; }
+}
+
+/* Sidebar */
+.sidebar {
+  align-self: start;
+  padding: 1.5rem;
+  background: var(--white);
+  border: 1px solid #d5e3ea;
+  border-radius: var(--radius);
+}
+
+.hours { margin: 0 0 1rem; }
+.hours div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #d5e3ea;
+}
+.hours dt { font-weight: 700; }
+.hours dd { margin: 0; }
+
+
+/* ---------- 7. CONTACT BAND ---------- */
+.contact {
+  background: var(--ocean);
+  color: var(--white);
+}
+.contact-inner {
+  max-width: 44rem;
+  margin-inline: auto;
+  padding: var(--section-space) var(--gutter);
+  text-align: center;
+}
+.contact h2 { color: var(--white); }
+.contact .hero-actions { justify-content: center; }
+
+
+/* ---------- 8. FOOTER ---------- */
+.site-footer {
+  background: var(--ink);
+  color: #d9e6ee;
+}
+.footer-grid {
+  display: grid;
+  gap: 1.5rem;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: 2.5rem var(--gutter);
+}
+.footer-brand {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+}
+.footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: #d9e6ee;
+}
+.footer-note {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+
+/* =====================================================
+   TABLET: 768px and up
+   ===================================================== */
+@media (min-width: 768px) {
+
+  /* Navigation: hide the hamburger, show the links in a row.
+     The element still has the popover attribute, so we reset its popover styling. */
+  .menu-btn,
+  .close-btn {
+    display: none;
+  }
+
+  .site-nav {
+    display: block;
+    position: static;
+    inset: auto;
+    width: auto;
+    height: auto;
+    padding: 0;
+    overflow: visible;
+    background: transparent;
+    color: inherit;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.25rem;
+    margin: 0;
+  }
+
+  .nav-list a {
+    color: var(--ocean);
+    font-size: 1rem;
+  }
+  .nav-list a:hover { background: var(--mist); }
+  .site-nav :focus-visible { outline-color: var(--aqua); }
+
+  .nav-list .nav-cta {
+    margin: 0 0 0 0.5rem;
+    background: var(--ocean);
+    color: var(--white);
+  }
+  .nav-list .nav-cta:hover { background: #0e527d; }
+
+  /* Hero becomes two columns */
+  .hero-inner {
+    grid-template-columns: 1.3fr 1fr;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  /* Footer becomes three columns */
+  .footer-grid {
+    grid-template-columns: 2fr 1fr 2fr;
+    align-items: start;
+  }
+}
+
+
+/* =====================================================
+   DESKTOP: 1024px and up
+   ===================================================== */
+@media (min-width: 1024px) {
+
+  /* Macro layout: main column + fixed-width sidebar */
+  .content {
+    grid-template-columns: minmax(0, 1fr) 19rem;
+    align-items: start;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 5.5rem;                     /* stays in view under the sticky header */
+  }
+}
+
+
+/* =====================================================
+   USER PREFERENCES
+   ===================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

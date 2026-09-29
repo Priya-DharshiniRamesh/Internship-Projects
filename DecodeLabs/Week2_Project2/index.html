@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- STEP 1: The viewport meta tag. Without it, phones pretend to be ~980px wide.
+       Note: we do NOT add user-scalable=no, so people can still zoom (accessibility). -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Riverbend Cycles | Repairs and commuter bikes</title>
+  <meta name="description" content="Riverbend Cycles: bike repairs, tune-ups and commuter builds. Drop off in the morning, ride home the same day.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ HEADER + RESPONSIVE NAVIGATION ============ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top">Riverbend Cycles</a>
+
+      <!-- Hamburger button: opens the popover below. No JavaScript needed. -->
+      <button class="menu-btn" type="button" popovertarget="site-menu" aria-label="Open menu">
+        <span class="menu-btn__bars" aria-hidden="true"></span>
+      </button>
+
+      <!-- Popover navigation: a slide-in panel on mobile, a normal row on desktop -->
+      <nav class="site-nav" id="site-menu" popover aria-label="Main">
+        <button class="close-btn" type="button" popovertarget="site-menu" popovertargetaction="hide" aria-label="Close menu">
+          Close
+        </button>
+        <ul class="nav-list">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#featured">Commuter builds</a></li>
+          <li><a href="#visit">Visit</a></li>
+          <li><a href="#contact" class="nav-cta">Book a repair</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <h1>Drop it off in the morning. Ride it home tonight.</h1>
+          <p class="lead">Riverbend Cycles fixes everyday bikes fast, and builds commuter bikes that fit the way you actually ride.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Book a repair</a>
+            <a class="btn btn-ghost" href="#services">See services</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel" aria-label="Today at the shop">
+          <h2>Today at the shop</h2>
+          <ul>
+            <li><strong>Same-day repairs</strong> when you drop off before 10 am</li>
+            <li><strong>Loan bikes</strong> for longer jobs</li>
+            <li><strong>No booking needed</strong> for puncture fixes</li>
+          </ul>
+        </aside>
+      </div>
+
+      <svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path d="M0,40 C240,90 480,0 720,30 C960,60 1200,90 1440,30 L1440,80 L0,80 Z"></path>
+      </svg>
+    </section>
+
+    <!-- ============ CONTENT: main column + sidebar (CSS Grid) ============ -->
+    <div class="content">
+
+      <div class="content-main">
+
+        <section id="services" class="section">
+          <h2>Services</h2>
+          <p class="section-intro">Fixed prices, written down before we start.</p>
+
+          <!-- Cards live in an auto-fit grid: columns appear as space allows -->
+          <div class="card-grid">
+            <article class="card">
+              <h3>Tune-up</h3>
+              <p>Brakes, gears, chain and tyre pressure checked and adjusted. Best for bikes that feel "off".</p>
+              <p class="card-meta">Ready in 1 day</p>
+              <a class="btn btn-outline" href="#contact">Book a tune-up</a>
+            </article>
+
+            <article class="card">
+              <h3>Wheel and brake repair</h3>
+              <p>Buckled wheels trued, spokes replaced, pads and cables swapped, discs bled.</p>
+              <p class="card-meta">Ready in 2 days</p>
+              <a class="btn btn-outline" href="#contact">Book a repair</a>
+            </article>
+
+            <article class="card">
+              <h3>Puncture fix</h3>
+              <p>Wait while we patch or replace the tube and check the tyre for whatever caused it.</p>
+              <p class="card-meta">Ready in 20 minutes</p>
+              <a class="btn btn-outline" href="#visit">See opening hours</a>
+            </article>
+          </div>
+        </section>
+
+        <!-- Featured block: reacts to its OWN width (container query), not the screen -->
+        <section id="featured" class="section">
+          <h2>Commuter builds</h2>
+          <div class="feature-wrap">
+            <article class="feature">
+              <div class="feature-art" aria-hidden="true">
+                <svg viewBox="0 0 120 80" focusable="false">
+                  <circle cx="26" cy="54" r="18" />
+                  <circle cx="94" cy="54" r="18" />
+                  <path d="M26 54 L52 26 L84 26 L94 54 M52 26 L62 54 L26 54 M62 54 L84 26 M46 20 H58" />
+                </svg>
+              </div>
+              <div class="feature-body">
+                <h3>Built around your route</h3>
+                <p>Tell us how far you ride, what you carry and where you park. We pick the frame, gearing and mudguards to match, then assemble it in the shop.</p>
+                <a class="btn btn-primary" href="#contact">Start a build</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Sidebar drops below the content on mobile, sits beside it on desktop -->
+      <aside id="visit" class="sidebar" aria-labelledby="visit-title">
+        <h2 id="visit-title">Visit the shop</h2>
+        <dl class="hours">
+          <div><dt>Mon to Fri</dt><dd>8 am to 7 pm</dd></div>
+          <div><dt>Saturday</dt><dd>9 am to 5 pm</dd></div>
+          <div><dt>Sunday</dt><dd>Closed</dd></div>
+        </dl>
+        <p>14 Mill Lane, Riverbend</p>
+        <p>Bike racks are right outside the door.</p>
+      </aside>
+
+    </div>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="contact">
+      <div class="contact-inner">
+        <h2>Ready to book?</h2>
+        <p>Call or email with your bike's make and the problem. We'll reply with a price and a drop-off time.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tel:+10000000000">Call the shop</a>
+          <a class="btn btn-ghost" href="mailto:hello@riverbendcycles.example">Send an email</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-brand">Riverbend Cycles</p>
+        <p>Repairs and commuter builds since 2012.</p>
+      </div>
+      <nav aria-label="Footer">
+        <ul class="footer-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#featured">Commuter builds</a></li>
+          <li><a href="#visit">Visit</a></li>
+        </ul>
+      </nav>
+      <p class="footer-note">&copy; 2026 Riverbend Cycles. A practice project for the DecodeLabs frontend internship.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
