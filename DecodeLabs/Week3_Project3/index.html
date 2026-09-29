@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Web Elements — Project 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- ============ HEADER ============ -->
+    <header class="header">
+      <div class="brand">
+        <span class="brand-mark">&lt;/&gt;</span>
+        <div>
+          <p class="brand-name">Interactive Web Elements</p>
+          <p class="brand-sub">Project 3 · DecodeLabs</p>
+        </div>
+      </div>
+
+      <!-- Requirement: a TOGGLE control -->
+      <label class="switch" for="theme-toggle">
+        <span class="switch-label">Dark</span>
+        <input type="checkbox" id="theme-toggle" class="js-theme-toggle" />
+        <span class="switch-track" aria-hidden="true">
+          <span class="switch-thumb"></span>
+        </span>
+      </label>
+    </header>
+
+    <main class="stack">
+
+      <!-- ============ COUNTER ============ -->
+      <section class="card">
+        <p class="tag"> counter</p>
+
+        <div class="counter-row">
+          <span id="score-display" class="score">0</span>
+          <p class="hint">click to adjust the score</p>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-icon js-decrement" aria-label="Decrease score">−</button>
+          <button class="btn btn-ghost js-reset">Reset</button>
+          <button class="btn btn-icon btn-accent js-increment" aria-label="Increase score">+</button>
+        </div>
+      </section>
+
+      <!-- ============ TO-DO LIST ============ -->
+      <section class="card">
+        <p class="tag">tasks</p>
+
+        <form class="add-row js-add-form">
+          <input
+            type="text"
+            id="task-input"
+            class="text-input"
+            placeholder="Add a task…"
+            autocomplete="off"
+          />
+          <button type="submit" class="btn btn-accent">Add</button>
+        </form>
+
+        <ul id="task-list" class="task-list"></ul>
+
+        <p id="empty-state" class="empty-state">No tasks yet — add your first one above.</p>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <p>Built with vanilla JavaScript · DOM events, state, and node creation</p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
