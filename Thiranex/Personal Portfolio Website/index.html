@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Priya Dharshini | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#home" class="logo">Priya Dharshini.</a>
+
+                <button class="menu-icon" id="menuOpen" aria-label="Open menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <ul class="nav-links" id="navLinks">
+                    <li class="close-icon">
+                        <button id="menuClose" aria-label="Close menu">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- Home Section -->
+    <section id="home" class="home-section">
+    <div class="container home-container">
+
+        <div class="home-content">
+            <p class="welcome-text">Hello, I'm</p>
+
+            <h1>Priya Dharshini R</h1>
+
+            <h2>Artificial Intelligence &amp; Data Science Student</h2>
+
+            <p>
+                I am an aspiring Software Engineer interested in
+                web development, data analytics and artificial intelligence.
+            </p>
+
+            <div class="home-buttons">
+                <a href="#portfolio" class="btn">View My Work</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
+        </div>
+
+    </div>
+    </section>
+
+
+    <!-- About Section -->
+    <section id="about">
+    <div class="container">
+
+        <div class="about-container">
+
+            <div class="about-image">
+                <img src="images/about.png" alt="About Priya Dharshini">
+            </div>
+
+            <div class="about-content">
+
+                <h2>About Me</h2>
+
+                <p>
+                    I am a B.Tech Artificial Intelligence and Data Science
+                    student with an interest in software development,
+                    machine learning and data analytics. I enjoy building
+                    practical projects and learning new technologies.
+                </p>
+
+                <div class="about-tabs">
+
+                    <p class="about-tab active"
+                       onclick="openTab('skills')">
+                        Skills
+                    </p>
+
+                    <p class="about-tab"
+                       onclick="openTab('experience')">
+                        Experience
+                    </p>
+
+                    <p class="about-tab"
+                       onclick="openTab('education')">
+                        Education
+                    </p>
+
+                </div>
+
+                <div id="skills" class="about-tab-content active">
+
+                    <span>Web Development</span>
+                    <p>HTML, CSS, JavaScript</p>
+
+                    <span>Programming</span>
+                    <p>Python, Java, C++</p>
+
+                    <span>Data &amp; AI</span>
+                    <p>Data Analytics, Machine Learning</p>
+
+                </div>
+
+                <div id="experience" class="about-tab-content">
+
+                    <span>Internship Projects</span>
+                    <p>
+                        Worked on web development, data analytics
+                        and AI-based projects.
+                    </p>
+
+                    <span>Project Development</span>
+                    <p>
+                        Built responsive websites and interactive
+                        data-driven applications.
+                    </p>
+
+                </div>
+
+                <div id="education" class="about-tab-content">
+
+                    <span>B.Tech Artificial Intelligence &amp; Data Science</span>
+                    <p>
+                        Kumaraguru College of Technology
+                    </p>
+
+                    <span>Current Status</span>
+                    <p>
+                        Pre-Final Year Student
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    </section>
+
+
+    <!-- Services Section -->
+    <section id="services">
+    <div class="container">
+
+        <h2>My Services</h2>
+
+        <div class="services-list">
+
+            <div class="service-card">
+                <i class="fa-solid fa-code"></i>
+                <h3>Web Development</h3>
+                <p>
+                    I create responsive and user-friendly websites
+                    using HTML, CSS and JavaScript.
+                </p>
+                <a href="#portfolio">Learn more</a>
+            </div>
+
+            <div class="service-card">
+                <i class="fa-solid fa-chart-column"></i>
+                <h3>Data Analytics</h3>
+                <p>
+                    I work with data to discover useful insights
+                    and create interactive dashboards.
+                </p>
+                <a href="#portfolio">Learn more</a>
+            </div>
+
+            <div class="service-card">
+                <i class="fa-solid fa-brain"></i>
+                <h3>AI &amp; Machine Learning</h3>
+                <p>
+                    I explore machine learning and artificial
+                    intelligence to build practical solutions.
+                </p>
+                <a href="#portfolio">Learn more</a>
+            </div>
+
+        </div>
+
+    </div>
+    </section>
+
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+    <div class="container">
+
+        <h2>My Work</h2>
+
+        <div class="portfolio-list">
+
+            <div class="portfolio-item">
+                <img src="images/portfolio-thumbnail.png" alt="Personal Portfolio Website">
+
+                <div class="portfolio-info">
+                    <h3>Personal Portfolio Website</h3>
+
+                    <p>
+                        A responsive personal portfolio website
+                        developed using HTML, CSS and JavaScript.
+                    </p>
+
+                    <a href="https://github.com/Priya-DharshiniRamesh/Internship-Projects/tree/main/Thiranex/Personal%20Portfolio%20Website" class="portfolio-link" target="_blank" rel="noopener" aria-label="View project">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="images/bi-dashboard-thumbnail.png" alt="Business Intelligence Dashboard">
+
+                <div class="portfolio-info">
+                    <h3>Business Intelligence Dashboard</h3>
+
+                    <p>
+                        An interactive dashboard created to analyze
+                        business and sales data.
+                    </p>
+
+                    <a href="https://github.com/Priya-DharshiniRamesh/24ADC001_24BAD092" class="portfolio-link" target="_blank" rel="noopener" aria-label="View project">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="images/web-app-thumbnail.png" alt="Interactive Web Application">
+
+                <div class="portfolio-info">
+                    <h3>Interactive Web Application</h3>
+
+                    <p>
+                        An interactive web application developed
+                        using HTML, CSS and JavaScript.
+                    </p>
+
+                    <a href="https://github.com/Priya-DharshiniRamesh/Internship-Projects/tree/main/DecodeLabs" class="portfolio-link" target="_blank" rel="noopener" aria-label="View project">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="text-align: center;">
+            <a href="https://github.com/" class="btn" target="_blank" rel="noopener">See more</a>
+        </div>
+
+    </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact">
+    <div class="container">
+        <div class="contact-container">
+
+            <div class="contact-info">
+                <h2>Contact Me</h2>
+
+                <p><i class="fa-solid fa-paper-plane"></i> srpriyadharshini16@gmail.com</p>
+                <p><i class="fa-solid fa-square-phone"></i> +91 6385832452</p>
+
+                <div class="social-icons">
+                    <a href="#" target="_blank" rel="noopener">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+
+                    <a href="#" target="_blank" rel="noopener">
+                        <i class="fa-brands fa-square-twitter"></i>
+                    </a>
+
+                    <a href="#" target="_blank" rel="noopener">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="#" target="_blank" rel="noopener">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </div>
+
+                <a href="./Priya-Dharshini-R-Resume.pdf" class="btn" target="_blank" rel="noopener">
+                    Download CV
+                </a>
+
+            </div>
+
+            <div class="contact-form">
+                <form name="submit-to-google-sheet">
+
+                    <input type="hidden" name="sheet_name" value="Sheet1">
+
+                    <input type="text" name="Name" placeholder="Your Name" required>
+
+                    <input type="email" name="Email" placeholder="Your Email" required>
+
+                    <textarea name="Message" rows="6" placeholder="Your Message" required></textarea>
+
+                    <button type="submit">Submit</button>
+
+                    <span id="msg"></span>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+    </section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Priya Dharshini. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

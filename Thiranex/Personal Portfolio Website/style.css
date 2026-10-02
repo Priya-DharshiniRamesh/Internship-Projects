@@ -1,0 +1,711 @@
+/* ============================================================
+   Priya Dharshini | Portfolio  -  style.css
+   Dark theme, pink accent, Poppins font
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ---------- Reset & base ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --bg: #080808;
+    --card: #262626;
+    --accent: #ff004f;
+    --text: #ffffff;
+    --muted: #ababab;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10%;
+}
+
+section {
+    scroll-margin-top: 20px;
+}
+
+h2 {
+    font-size: 60px;
+    font-weight: 600;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--text);
+    border: 1px solid var(--accent);
+    padding: 12px 34px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.5s, color 0.5s, transform 0.3s;
+}
+
+.btn:hover {
+    background: #b3003a;
+    border-color: #b3003a;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--text);
+}
+
+.btn-outline:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+/* ---------- Header ---------- */
+#header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+#header nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.logo::first-letter {
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links li a {
+    position: relative;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--text);
+}
+
+/* pink underline that grows on hover */
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 3px;
+    background: var(--accent);
+    transition: width 0.5s;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+/* hamburger + close buttons (only shown on phones) */
+.menu-icon,
+.close-icon {
+    display: none;
+}
+
+.menu-icon,
+.close-icon button {
+    background: none;
+    border: 0;
+    color: var(--text);
+    font-size: 26px;
+    line-height: 1;
+    min-width: 36px;
+    min-height: 36px;
+    cursor: pointer;
+}
+/* ---------- Home / Hero (parallax: photo stays fixed) ---------- */
+.home-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: #000;
+    background-image: url("images/home-circle-right.png");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.home-container {
+    display: flex;
+    align-items: center;
+    padding-top: 90px;
+}
+
+.home-content {
+    max-width: 560px;
+}
+
+.welcome-text {
+    font-size: 20px;
+    color: var(--text);
+}
+
+.home-content h1 {
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 10px 0;
+    color: var(--accent);
+}
+
+.home-content h2 {
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.home-content p {
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 520px;
+    margin-bottom: 30px;
+}
+
+.home-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* every section after the hero slides OVER the fixed photo */
+#about,
+#services,
+#portfolio,
+#contact,
+footer {
+    position: relative;
+    z-index: 2;
+    background: var(--bg);
+}
+
+/* ---------- About ---------- */
+#about {
+    padding: 80px 0;
+    color: var(--muted);
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 35% 60%;
+    gap: 5%;
+    align-items: start;
+}
+
+.about-image {
+    margin-top: 40px;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 15px;
+    background: var(--card);
+    display: block;
+}
+
+.about-content {
+    width: 100%;
+}
+
+.about-content h2 {
+    color: var(--text);
+    margin-bottom: 20px;
+}
+
+.about-content > p {
+    margin-top: 12px;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.about-tabs {
+    display: flex;
+    margin: 20px 0 30px;
+}
+
+.about-tab {
+    margin-right: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    position: relative;
+}
+
+.about-tab::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 0;
+    height: 3px;
+    background: var(--accent);
+    transition: width 0.5s;
+}
+
+.about-tab.active::after {
+    width: 50%;
+}
+
+.about-tab-content {
+    display: none;
+}
+
+.about-tab-content.active {
+    display: block;
+}
+
+.about-tab-content span {
+    display: block;
+    margin-top: 14px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+.about-tab-content p {
+    font-size: 15px;
+    color: var(--muted);
+    margin-top: 5px;
+}
+
+/* ---------- Services ---------- */
+#services {
+    padding: 40px 0 80px;
+}
+
+.services-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.service-card {
+    background: var(--card);
+    padding: 30px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 300;
+    transition: background 0.5s, transform 0.5s;
+}
+
+.service-card i {
+    display: block;
+    font-size: 50px;
+    line-height: 1;
+    margin-bottom: 22px;
+    color: var(--text);
+}
+
+.service-card h3 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 14px;
+}
+
+.service-card p {
+    color: #e6e6e6;
+    line-height: 1.5;
+}
+
+.service-card a {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--text);
+}
+
+.service-card:hover {
+    background: var(--accent);
+    transform: translateY(-10px);
+}
+
+/* ---------- Portfolio ---------- */
+#portfolio {
+    padding: 40px 0 60px;
+}
+
+.portfolio-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin: 10px 0 40px;
+}
+
+.portfolio-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #010101;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.5s;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.1);
+}
+
+/* pink overlay that slides up from the bottom */
+.portfolio-info {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+    padding: 0 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), var(--accent));
+    transition: height 0.5s;
+}
+
+.portfolio-item:hover .portfolio-info {
+    height: 100%;
+}
+
+.portfolio-info h3 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.portfolio-info p {
+    font-size: 13px;
+    font-weight: 300;
+    margin-bottom: 16px;
+}
+
+.portfolio-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
+    background: var(--text);
+    color: var(--accent);
+    border-radius: 50%;
+    font-size: 18px;
+    transition: transform 0.3s;
+}
+
+.portfolio-link:hover {
+    transform: scale(1.15);
+}
+
+#portfolio .btn {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--text);
+}
+
+#portfolio .btn:hover {
+    background: var(--accent);
+}
+
+/* ---------- Contact ---------- */
+#contact {
+    padding: 80px 0;
+}
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.contact-info {
+    flex-basis: 35%;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 22px;
+    font-size: 14px;
+    color: var(--text);
+}
+
+.contact-info p i {
+    color: var(--accent);
+    font-size: 20px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 14px;
+    margin: 28px 0;
+}
+
+.social-icons a {
+    font-size: 24px;
+    color: #ababab;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--accent);
+    transform: translateY(-5px);
+}
+
+.contact-info .btn {
+    display: inline-block;
+    font-size: 13px;
+    padding: 12px 34px;
+    margin-top: 10px;
+}
+
+.contact-form {
+    flex-basis: 60%;
+    position: relative;
+    top: 75px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: #262626;
+    color: var(--text);
+    padding: 15px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    border-radius: 6px;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #777;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form button {
+    background: var(--accent);
+    color: var(--text);
+    border: 0;
+    padding: 14px 60px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.5s;
+}
+
+.contact-form button:hover {
+    background: #b3003a;
+}
+
+#msg {
+    display: block;
+    margin-top: 16px;
+    font-size: 14px;
+    color: #61b752;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    background: var(--card);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 900px) {
+    .home-content h1 {
+        font-size: 44px;
+    }
+
+    h2 {
+        font-size: 44px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .container {
+        padding: 0 6%;
+    }
+
+       /* header: logo left, hamburger right, menu slides in from the right */
+    .logo {
+        font-size: 24px;
+    }
+
+    .menu-icon,
+    .close-icon {
+        display: block;
+    }
+
+    .close-icon {
+        margin-bottom: 14px;
+    }
+
+    .close-icon button {
+        padding: 0;
+        text-align: left;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -220px;
+        width: 200px;
+        height: 100vh;
+        background: var(--accent);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 22px;
+        padding: 30px 28px;
+        z-index: 20;
+        transition: right 0.5s;
+    }
+
+    .nav-links.open {
+        right: 0;
+    }
+
+    .nav-links li a {
+        font-size: 17px;
+    }
+
+    .nav-links li a::after {
+        background: var(--text);
+    }
+
+    /* hero: photo on top, text below (no parallax on phones) */
+    .home-section {
+        min-height: auto;
+        background-attachment: scroll;
+        background-size: 910px auto;
+        background-position: calc(50vw - 653px) 0;
+        padding-bottom: 50px;
+    }
+
+    .home-container {
+        padding-top: 440px;
+        text-align: center;
+    }
+
+    .home-content {
+        max-width: 100%;
+    }
+
+    .home-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .home-content h1 {
+        font-size: 36px;
+    }
+
+    .home-content h2 {
+        font-size: 20px;
+    }
+
+    .home-buttons {
+        justify-content: center;
+    }
+
+    h2 {
+        font-size: 36px;
+    }
+
+    /* about */
+    .about-container {
+        grid-template-columns: 1fr;
+    }
+
+    .about-tab {
+        margin-right: 24px;
+        font-size: 16px;
+    }
+
+    /* services */
+    .services-list {
+        grid-template-columns: 1fr;
+    }
+
+    /* contact */
+    .contact-info,
+    .contact-form {
+        flex-basis: 100%;
+    }
+
+    .contact-form {
+        top: 0;
+    }
+
+    .contact-form button {
+        width: 100%;
+    }
+}
