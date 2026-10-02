@@ -1,0 +1,149 @@
+/* index.css – base styles and theme tokens (portfolio theme: dark + pink accent, Poppins) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  /* portfolio palette */
+  --bg: #080808;
+  --card: #262626;
+  --accent: #ff004f;
+  --text: #ffffff;
+  --muted: #ababab;
+
+  /* tokens used by App.css */
+  --surface: #262626;
+  --surface-2: #1f1f1f;
+  --surface-solid: #1c1c1c;
+  --input-bg: #141414;
+  --text-h: #ffffff;
+  --border: rgba(255, 255, 255, 0.10);
+  --primary: #ff004f;
+  --primary-2: #ff3d77;
+  --success: #2ecc71;
+  --success-2: #2ecc71;
+  --danger: #ff004f;
+  --danger-2: #ff3d77;
+  --radius: 16px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --glow: 0 0 24px rgba(255, 0, 79, 0.45);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --shadow-hover: 0 0 0 1px rgba(255, 0, 79, 0.25), 0 18px 44px rgba(255, 0, 79, 0.22);
+  --font: "Poppins", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  color-scheme: dark;
+  accent-color: var(--accent);
+  scrollbar-color: var(--accent) var(--bg);   /* Firefox */
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font);
+  line-height: 1.5;
+  color: var(--text);
+  background: radial-gradient(circle at 82% 0%, #1d1d1d 0%, var(--bg) 58%) fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* glowing pink ring on the right edge – echoes the hero circle in the portfolio */
+body::before {
+  content: "";
+  position: fixed;
+  top: 50%;
+  right: -240px;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background: radial-gradient(circle, rgba(255, 0, 79, 0.14), transparent 68%);
+  border: 1px solid rgba(255, 0, 79, 0.12);
+  box-shadow: inset 0 0 60px rgba(255, 0, 79, 0.06);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* fine dot grid that fades out away from the top – gives the dark page some texture */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000, transparent 75%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  border: none;
+  text-align: center;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--text-h);
+}
+
+p {
+  margin: 0;
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+}
+
+input,
+textarea {
+  caret-color: var(--accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 10px;
+  border: 2px solid var(--bg);
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+@media (max-width: 600px) {
+  body::before {
+    width: 380px;
+    height: 380px;
+    right: -200px;
+  }
+}
