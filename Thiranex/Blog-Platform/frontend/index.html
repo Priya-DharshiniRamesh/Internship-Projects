@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Blog Platform</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #555;
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 5px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #555;
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 8px 12px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>Blog Platform</h1>
+
+        <p>Share your thoughts and connect through comments</p>
+
+        <nav>
+
+            <a href="index.html">Home</a>
+
+            <a href="posts.html">Posts</a>
+
+            <a href="create-post.html">Create Post</a>
+
+            <a href="login.html" id="navLogin">Login</a>
+
+            <a href="register.html" id="navRegister">Register</a>
+
+            <a href="#" id="navLogout" onclick="logout(); return false;">
+                Logout
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <div class="container">
+
+        <h2>Welcome to the Blog Platform</h2>
+
+        <p>
+            Create, edit and delete your blog posts.
+            Read posts and share your thoughts through comments.
+        </p>
+
+        <div class="buttons">
+            <a href="register.html" id="registerLink">
+                Register
+            </a>
+
+            <a href="login.html" id="loginLink">
+                Login
+            </a>
+
+            <a href="posts.html">
+                View Posts
+            </a>
+
+            <a href="create-post.html">
+                Create Post
+            </a>
+
+            <button onclick="logout()" id="logoutButton">
+                Logout
+            </button>
+
+
+        </div>
+
+    </div>
+
+<script>
+
+    const token = localStorage.getItem("token");
+
+    const registerLink = document.getElementById("registerLink");
+    const loginLink = document.getElementById("loginLink");
+    const logoutButton = document.getElementById("logoutButton");
+    const navLogin = document.getElementById("navLogin");
+    const navRegister = document.getElementById("navRegister");
+    const navLogout = document.getElementById("navLogout");
+
+    if (token) {
+
+        registerLink.style.display = "none";
+        loginLink.style.display = "none";
+        navLogin.style.display = "none";
+        navRegister.style.display = "none";
+
+    } else {
+
+        logoutButton.style.display = "none";
+        navLogout.style.display = "none";
+
+    }
+
+    function logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    alert("Logged out successfully");
+
+    window.location.href = "login.html";
+    }
+
+</script>
+
+</body>
+
+</html>
